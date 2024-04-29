@@ -3,9 +3,32 @@ from main import models as main_models
 from checkout import models as checkout_models
 
 # Register your models here.
-admin.site.register(main_models.Ingredient)
-admin.site.register(main_models.Recipe)
-admin.site.register(main_models.Menu)
-admin.site.register(main_models.Order)
-admin.site.register(main_models.Way_Recieved)
-admin.site.register(checkout_models.Member)
+@admin.register(main_models.Ingredient)
+class IngredientAdmin(admin.ModelAdmin):
+    """Define admin class for Ingredient."""
+    list_display = ('name', 'id')
+
+@admin.register(main_models.Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    """Define admin class for Recipe."""
+    list_display = ('id', 'menu_id')
+
+@admin.register(main_models.Menu)
+class MenuAdmin(admin.ModelAdmin):
+    """Define admin class for Menu."""
+    list_display = ('name', 'price', 'id')
+
+@admin.register(main_models.Order)
+class OrderAdmin(admin.ModelAdmin):
+    """Define admin class for Order."""
+    list_display = ('id', 'member_id', 'way_recieved_id', 'total', 'is_completed', 'is_cash')
+
+@admin.register(main_models.Way_Recieved)
+class WayRecievedAdmin(admin.ModelAdmin):
+    """Define admin class for WayRecieved."""
+    list_display = ('type', 'id')
+
+@admin.register(checkout_models.Member)
+class MemberAdmin(admin.ModelAdmin):
+    """Define admin class for Member."""
+    list_display = ('username', 'fname', 'lname', 'phone_num', 'email', 'address', 'tokens', 'id')

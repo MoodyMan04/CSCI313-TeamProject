@@ -11,3 +11,6 @@ class Member(models.Model):
     phone_num = models.CharField(max_length=31)
     email = models.EmailField()
     address = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return str(self.username) + ", Name: " + str(self.fname) + " " + str(self.lname)
