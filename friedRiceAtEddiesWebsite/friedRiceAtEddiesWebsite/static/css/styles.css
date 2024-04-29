@@ -5,3 +5,10 @@ body {
 .carousel-img {
     border: 2px solid black;
 }
+
+.custom-order {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #1971c2;
+    color: white;
+}

@@ -6,5 +6,5 @@ def index(request):
 
 def menu(request):
     menu_list = Menu.objects.order_by('name')
-    menu_dict = {'menu': menu_list}
-    return render(request, 'main/menu.html', menu_dict)
+    context = {'menu': menu_list}
+    return render(request, 'main/menu.html', context=context)
