@@ -30,7 +30,8 @@
         <li class="nav-item">
           <form id="logout-form" method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit" class="btn btn-link">Logout</button>
+            <button class="nav-link active"
+            aria-current="page" type="submit" class="btn btn-link">Logout</button>
           </form>
         </li>
         {% else %}
