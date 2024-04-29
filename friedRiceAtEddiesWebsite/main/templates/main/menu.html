@@ -35,9 +35,8 @@
                         <p class="card-text" style="font-size:0.5em;">
                           Made with: 
                           {% for i in r.ingredients.all %}
-                            {{i.name}},
+                            {{i.name}}{% if not forloop.last %}, {% endif %}
                           {% endfor %}
-                          Love
                         </p>
                       {% endif %}
                       <div class="text-center">
