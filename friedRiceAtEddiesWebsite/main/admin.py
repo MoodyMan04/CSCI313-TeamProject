@@ -31,4 +31,4 @@ class WayRecievedAdmin(admin.ModelAdmin):
 @admin.register(checkout_models.Member)
 class MemberAdmin(admin.ModelAdmin):
     """Define admin class for Member."""
-    list_display = ('user', 'phone_num', 'mailing_address', 'tokens')
+    list_display = ('username', 'fname', 'lname', 'phone_num', 'email', 'address', 'tokens', 'id')
