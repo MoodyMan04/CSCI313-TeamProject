@@ -13,4 +13,4 @@ class Member(models.Model):
     address = models.CharField(max_length=200)
 
     def __str__(self) -> str:
-        return str(self.username) + ", Name: " + str(self.fname) + " " + str(self.lname)
+        return str(self.username) + str(self.fname) + " " + str(self.lname)
