@@ -21,7 +21,7 @@
     <div style="padding: 10px"></div>
     <div
       id="carouselMain"
-      class="carousel slide carousel-fade carousel-padding"
+      class="carousel slide carousel-fade carousel-padding mb-5"
       data-interval="3000"
       data-bs-ride="carousel"
     >
@@ -52,7 +52,7 @@
           <div class="d-flex justify-content-center">
             <img
               src="{% static 'main/img/banner1.jpg' %}"
-              class="d-block w-50 carousel-img"
+              class="d-block img-fluid m-50 carousel-img"
               alt="New Location in Fargo/Moorhead!"
             />
           </div>
@@ -61,7 +61,7 @@
           <div class="d-flex justify-content-center">
             <img
               src="{% static 'main/img/banner2.jpg' %}"
-              class="d-block w-50 carousel-img"
+              class="d-block img-fluid m-50 carousel-img"
               alt="Bible Quote"
             />
           </div>
@@ -70,7 +70,7 @@
           <div class="d-flex justify-content-center">
             <img
               src="{% static 'main/img/banner3.jpg' %}"
-              class="d-block w-50 carousel-img"
+              class="d-block img-fluid m-50 carousel-img"
               alt="$6 Shrimp Special!!1!"
             />
           </div>
@@ -78,7 +78,30 @@
       </div>
     </div>
     <!-- Deals Section -->
-    <!-- Order Here Button -->
+    <div class="text-center">
+      <h1 style="color: red">HOT ITEMS RIGHT NOW</h1>
+      <h2>BUY THEM BEFORE THEY GO!</h2>
+    </div>
+
+    <div class="container d-flex align-items-center justify-content-center">
+      <div class="row">
+        {%if menu %} {%for item in menu %}
+        <div class="col-sm">
+          <div class="card" style="width: 18rem">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              <p class="card-text">{{item.price}}</p>
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% else %}s
+        <h1>No Menu Items Found.</h1>
+        {% endif %}
+      </div>
+    </div>
+
     <br />
     <div class="text-center">
       <a href="{% url 'menu' %}" class="btn btn-primary"><h2>Order Here</h2></a>
