@@ -23,18 +23,28 @@
             Menu
           </a>
         </li>
-        {% comment %} {% if user.is_authenticated %}
-        <li class="nav-item">
+        {% if user.is_authenticated %}
+        {% comment %}<!-- <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li> -->{% endcomment %}
+        <li class="nav-item">
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link">Logout</button>
+          </form>
         </li>
         {% else %}
-        <li class="nav-item">
+        {% comment %}  <!-- <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li>
+        </li> -->{% endcomment %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
+          <a class="nav-link active"
+          aria-current="page" href="{% url 'login' %}?next={{ request.path }}">Login</a>
         </li>
-        {% endif %} {% endcomment %}
+       {% comment %} <!-- <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li> -->{% endcomment %}
+        {% endif %} 
       </ul>
     </div>
   </div>
