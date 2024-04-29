@@ -29,7 +29,7 @@
                   <div class="card mb-3">
                     <h5 class="card-header"><b>{{r.menu_id.name}}</b></h5>
                     <div class="card-body">
-                      <p class="card-text"><b>${{r.menu_id.price}}</b></p>
+                      <p class="card-text" style="margin:0;"><b>${{r.menu_id.price}}</b></p>
                       {% comment %} Add ingr list here - recipe holds foriegn key to menu item {% endcomment %}
                       {% if r.ingredients %}
                         <p class="card-text" style="font-size:0.5em;">
