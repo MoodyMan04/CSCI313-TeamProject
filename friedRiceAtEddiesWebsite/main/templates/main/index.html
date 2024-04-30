@@ -21,7 +21,7 @@
     <div style="padding: 10px"></div>
     <div
       id="carouselMain"
-      class="carousel slide carousel-fade carousel-padding mb-5"
+      class="carousel slide carousel-padding mb-5"
       data-interval="3000"
       data-bs-ride="carousel"
     >
@@ -51,8 +51,8 @@
         <div class="carousel-item active">
           <div class="d-flex justify-content-center">
             <img
-              src="{% static 'main/img/banner1.jpg' %}"
-              class="d-block img-fluid m-50 carousel-img"
+              src="{% static 'main/img/banner1.png' %}"
+              class="d-block img-fluid m-50"
               alt="New Location in Fargo/Moorhead!"
             />
           </div>
@@ -60,8 +60,8 @@
         <div class="carousel-item">
           <div class="d-flex justify-content-center">
             <img
-              src="{% static 'main/img/banner2.jpg' %}"
-              class="d-block img-fluid m-50 carousel-img"
+              src="{% static 'main/img/banner2.png' %}"
+              class="d-block img-fluid m-50"
               alt="Bible Quote"
             />
           </div>
@@ -69,8 +69,8 @@
         <div class="carousel-item">
           <div class="d-flex justify-content-center">
             <img
-              src="{% static 'main/img/banner3.jpg' %}"
-              class="d-block img-fluid m-50 carousel-img"
+              src="{% static 'main/img/banner3.png' %}"
+              class="d-block img-fluid m-50"
               alt="$6 Shrimp Special!!1!"
             />
           </div>
@@ -79,7 +79,9 @@
     </div>
     <!-- Deals Section -->
     <div class="text-center">
-      <h1 style="color: red">HOT ITEMS RIGHT NOW</h1>
+      <h1 style="color: red">
+        <u><b>HOT ITEMS RIGHT NOW</b></u>
+      </h1>
       <h2>BUY THEM BEFORE THEY GO!</h2>
     </div>
 
@@ -88,10 +90,9 @@
         {%if menu %} {%for item in menu %}
         <div class="col-sm">
           <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
+            <h5 class="card-header"><b>{{item.name}}</b></h5>
             <div class="card-body">
-              <h5 class="card-title">{{item.name}}</h5>
-              <p class="card-text">{{item.price}}</p>
+              <p class="card-text"><b>${{item.price}}</b></p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div>
