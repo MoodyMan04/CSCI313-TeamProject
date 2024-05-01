@@ -51,24 +51,6 @@
         {% else %}
         <h1>No Menu Items Found.</h1>
         {% endif %}
-        {% comment %} {% if menu %} 
-          {% for i in menu %}
-            <div class="col-sm-4">
-              <div class="card mb-3">
-                <h5 class="card-header"><b>{{i.name}}</b></h5>
-                <div class="card-body">
-                  <p class="card-text"><b>${{i.price}}</b></p>
-                  <div class="text-center">
-                    <a href="#addItemToCart" class="btn btn-primary">Select</a>
-                    <a href="#customizeItem" class="btn btn-primary">Customize</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
-        <h1>No Menu Items Found.</h1>
-        {% endif %} {% endcomment %}
       </div>
     <!-- Custom Item Section -->
     <div class="custom-order">
