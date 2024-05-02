@@ -1,5 +1,7 @@
-body {
-  background-color: aliceblue;
+html, body {
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
 }
 
 .custom-order {
