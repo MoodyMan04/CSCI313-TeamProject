@@ -17,7 +17,7 @@ class Member(models.Model):
         return f'{self.username}, {self.fname} {self.lname}'
     
 class CartItem(models.Model):
-    user = models.ForeignKey(Member, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(Member, on_delete=models.CASCADE, null=True, blank=True)
     item = models.ForeignKey(Menu, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
