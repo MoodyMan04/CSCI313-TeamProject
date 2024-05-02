@@ -23,7 +23,6 @@ class Recipe(models.Model):
 
     def __str__(self) -> str:
         return f'{self.id}'
-    
 
 class Way_Recieved(models.Model):
     id = models.AutoField(primary_key=True)
