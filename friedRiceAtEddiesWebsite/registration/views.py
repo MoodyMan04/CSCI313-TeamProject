@@ -23,7 +23,7 @@ def sign_in(request):
 
     if request.method == 'GET':
         form = LoginForm()
-        return render(request, 'users/login.html', {'form': form})
+        return render(request, 'registration/login.html', {'form': form})
 
     elif request.method == 'POST':
         form = LoginForm(request.POST)
@@ -36,7 +36,7 @@ def sign_in(request):
                 login(request, user)
                 messages.success(
                     request, f'Hi {username.title()}, welcome back!')
-                return redirect('posts')
+                return redirect('menu')
 
         # either form not valid or user is not authenticated
         messages.error(request, f'Invalid username or password')
