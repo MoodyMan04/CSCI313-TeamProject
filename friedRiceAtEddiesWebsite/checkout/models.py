@@ -22,11 +22,19 @@ class CartItem(models.Model):
     def __str__(self) -> str:
         return f'{self.quantity} x {self.item.name}'
     
+class OrderLine(models.Model):
+    id = models.AutoField(primary_key=True)
+    menu_item = models.ForeignKey(Menu, on_delete=models.DO_NOTHING)
+    qty = models.PositiveIntegerField(default=1)
+
+    def __str__(self) -> str:
+        return f'{self.qty}x {self.menu_item}'
+    
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
     member_id = models.ForeignKey(Member, on_delete=models.CASCADE, null=True, blank=True)
     way_recieved_id = models.ForeignKey(Way_Recieved, on_delete=models.CASCADE)
-    menu_items = models.ManyToManyField(Menu)
+    menu_items = models.ManyToManyField(OrderLine)
     total = models.DecimalField(max_digits=5, decimal_places=2)
     is_completed = models.BooleanField()
     is_cash = models.BooleanField()

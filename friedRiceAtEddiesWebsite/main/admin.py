@@ -37,3 +37,7 @@ class WayRecievedAdmin(admin.ModelAdmin):
 class MemberAdmin(admin.ModelAdmin):
     """Define admin class for Member."""
     list_display = ('user', 'phone_num', 'mailing_address', 'tokens')
+
+@admin.register(checkout_models.OrderLine)
+class OrderLineAdmin(admin.ModelAdmin):
+    list_display = ('menu_item', 'qty')
