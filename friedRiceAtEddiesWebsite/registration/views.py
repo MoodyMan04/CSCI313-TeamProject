@@ -13,7 +13,7 @@ def sign_up(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            messages.success(request, 'Good')
+            messages.success(request, 'Account creation successful. Please enjoy the rice.')
             login(request, user)
             return redirect('menu')
         else:
