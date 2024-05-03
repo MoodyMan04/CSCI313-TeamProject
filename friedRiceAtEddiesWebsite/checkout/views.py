@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from checkout.models import CartItem, Order, Member
 from main.models import Menu, Way_Recieved
 import math
@@ -59,6 +60,7 @@ def process_order(request, w_id):
     
     if (total_price>0):#prevent empty orders
         total_price+=total_price*0.0697
+        messages.success(request, f'{Way_Recieved.objects.get(id=w_id)} order placed! Your total is: ${round(float(total_price), 2)}. Thank you for the gold, {member if member is not None else "kind stranger"}!')
         order = Order.objects.create(member_id=member, way_recieved_id = Way_Recieved.objects.get(id=w_id), total=total_price, is_completed=False, is_cash=False)
         if (member != None): #Set tokens
             new_tokens = math.floor(total_price*100)
@@ -68,7 +70,8 @@ def process_order(request, w_id):
         for i in cart_items: #Clear cart and add to order
             order.menu_items.add(i.item.id)
             i.delete()
+    else:
+        messages.error(request, 'Order failed: no items in cart.')
 
-    
     
     return redirect('/checkout')

@@ -11,7 +11,7 @@ class Member(models.Model):
     mailing_address = models.CharField(max_length=200)
 
     def __str__(self) -> str:
-        return f'{self.user}, {self.id}'
+        return f'{self.user}'
     
 class CartItem(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE, null=True, blank=True)
