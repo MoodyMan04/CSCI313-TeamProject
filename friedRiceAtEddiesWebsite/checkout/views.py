@@ -56,8 +56,11 @@ def process_order(request, w_id):
         member = Member.objects.get(user=request.user)
     except:
         cart_items = CartItem.objects.filter(user=None)
-    total_price=float(sum(item.item.price * item.quantity for item in cart_items))    
-    
+    try:
+        total_price = float(sum(item.item.price * item.quantity for item in cart_items))    
+    except:
+        total_price = 0
+
     if (total_price>0):#prevent empty orders
         total_price+=total_price*0.0697
         messages.success(request, f'{Way_Recieved.objects.get(id=w_id)} order placed! Your total is: ${round(float(total_price), 2)}. Thank you for the gold, {member if member is not None else "kind stranger"}!')
