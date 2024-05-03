@@ -1,5 +1,7 @@
-body {
-  background-color: aliceblue;
+html, body {
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
 }
 
 .custom-order {
@@ -7,4 +9,11 @@ body {
   padding: 10px;
   background-color: #1971c2;
   color: white;
+}
+
+.checkout-section {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #3b3f42;
+    color: white;
 }

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from main.models import Menu
 from main.models import Ingredient
 from main.models import Recipe
+from checkout.views import add_to_cart
 import random, math
 
 def index(request):
@@ -16,3 +17,6 @@ def menu(request):
     recipe_list = Recipe.objects.order_by('menu_id').prefetch_related('ingredients')
     context = {'menu': menu_list, 'ingredients': ingr_list, 'recipes': recipe_list}
     return render(request, 'main/menu.html', context=context)
+
+def add_button(request, item_id):
+    return add_to_cart(request, item_id)

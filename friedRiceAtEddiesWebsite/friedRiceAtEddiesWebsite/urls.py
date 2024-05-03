@@ -21,6 +21,7 @@ from registration import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    path('checkout/', include('checkout.urls')),
 ]
 
 #Add Django site authentication urls (for login, logout, password management)
