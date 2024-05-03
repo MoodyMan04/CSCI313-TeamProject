@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm
+from checkout.models import Member
 
 def sign_up(request):
     if request.method == 'GET':
@@ -12,8 +13,9 @@ def sign_up(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
+            user.member = Member.add_to_class
             user.save()
-            messages.success(request, 'Good')
+            messages.success(request, 'You have registered successfully!')
             login(request, user)
             return redirect('menu')
         else:
