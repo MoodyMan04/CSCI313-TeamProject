@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from main.models import Menu
 from main.models import Ingredient
 from main.models import Recipe
