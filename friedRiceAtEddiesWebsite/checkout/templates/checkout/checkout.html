@@ -33,15 +33,21 @@
             {% endif %}
           </div>
           {% comment %} deliver method selection {% endcomment %}
-          <p>You have {{tokens}} tokens availible. How would you like to enjoy your order?</p>
-          {% if way_recieveds %}
-            {% for w in way_recieveds %}
-            <a href="{% url 'process_order' w.id %}" class="btn btn-primary">{{w.type}}</a>
-            {% endfor %}
-          {% endif %}
+          <p>
+            You have {{tokens}} tokens availible. How would you like to enjoy
+            your order?
+          </p>
+          {% if way_recieveds %} {% for w in way_recieveds %}
+          <a href="{% url 'process_order' w.id %}" class="btn btn-primary"
+            >{{w.type}}</a
+          >
+          {% endfor %} {% endif %}
         </div>
         <div class="col-lg-6">{% include 'checkout/map.html' %}</div>
       </div>
+      <a class="btn btn-primary btn-lg" href="{% url 'menu' %}" role="button"
+        >Continue Shopping</a
+      >
     </div>
 
     <script
