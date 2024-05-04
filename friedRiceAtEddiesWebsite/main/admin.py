@@ -18,10 +18,15 @@ class MenuAdmin(admin.ModelAdmin):
     """Define admin class for Menu."""
     list_display = ('name', 'price', 'id')
 
-@admin.register(main_models.Order)
+@admin.register(checkout_models.Order)
 class OrderAdmin(admin.ModelAdmin):
     """Define admin class for Order."""
     list_display = ('id', 'member_id', 'way_recieved_id', 'total', 'is_completed', 'is_cash')
+
+@admin.register(checkout_models.CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    """Define admin class for CheckoutItem."""
+    list_display = ('user', 'item', 'quantity', 'date_added')
 
 @admin.register(main_models.Way_Recieved)
 class WayRecievedAdmin(admin.ModelAdmin):
@@ -32,3 +37,7 @@ class WayRecievedAdmin(admin.ModelAdmin):
 class MemberAdmin(admin.ModelAdmin):
     """Define admin class for Member."""
     list_display = ('user', 'phone_num', 'mailing_address', 'tokens')
+
+@admin.register(checkout_models.OrderLine)
+class OrderLineAdmin(admin.ModelAdmin):
+    list_display = ('menu_item', 'qty')

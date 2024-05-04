@@ -15,7 +15,7 @@ def sign_up(request):
             user.username = user.username.lower()
             user.member = Member.add_to_class
             user.save()
-            messages.success(request, 'You have registered successfully!')
+            messages.success(request, 'Account creation successful. Please enjoy the rice.')
             login(request, user)
             return redirect('menu')
         else:

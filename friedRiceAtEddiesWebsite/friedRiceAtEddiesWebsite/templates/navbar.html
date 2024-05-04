@@ -16,7 +16,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -44,6 +44,17 @@
           aria-current="page" href="{% url 'register' %}">Register</a>
         </li>
         {% endif %} 
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'checkout' %}"
+          >
+            Checkout
+          </a>
+        </li>
       </ul>
     </div>
   </div>
