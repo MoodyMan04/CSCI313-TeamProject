@@ -38,7 +38,23 @@ def add_to_cart(request, item_id):
 
     cart_item.quantity += 1
     cart_item.save()
-    return redirect('/menu')
+    return redirect('/checkout')
+
+def add_custom_to_cart(request):
+    items = Menu.objects.all()
+
+    item_to_use = ''
+    for item in items:
+        if item.name == 'Custom item':
+            item_to_use = item
+    try:
+        cart_item, created = CartItem.objects.get_or_create(item=item, user=Member.objects.get(user=request.user))
+    except:
+        cart_item, created = CartItem.objects.get_or_create(item=item)
+
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('/checkout')
 
 def remove_from_cart(request, item_id):
     item = Menu.objects.get(id=item_id)

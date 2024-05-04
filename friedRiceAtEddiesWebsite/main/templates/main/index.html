@@ -116,7 +116,10 @@
                 alt="friedrice3.png"
               />
               <p class="card-text"><b>${{item.price}}</b></p>
-              <a href="#" class="stretched-link"></a>
+              <a
+                href="{% url 'add_to_cart' item.id %}"
+                class="stretched-link"
+              ></a>
             </div>
           </div>
         </div>
