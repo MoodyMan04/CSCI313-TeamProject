@@ -17,8 +17,8 @@ def view_cart(request):
     way_recieveds = Way_Recieved.objects.all
     
     return render(request, 'checkout/checkout.html', {'cart_items': cart_items, 'total_price': total_price, 
-                                                      'tax': round((float(total_price) * 0.0697), 2), 
-                                                      'final_price': float(total_price) + round((float(total_price) * 0.0697), 2),
+                                                      'tax': "%.2f" % round((float(total_price) * 0.0697), 2), 
+                                                      'final_price': "%.2f" % round((float(total_price) + float(total_price) * 0.0697), 2),
                                                       'way_recieveds': way_recieveds, 'tokens': tokens})
 
 # def total_items_cart(request):

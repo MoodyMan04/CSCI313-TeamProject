@@ -26,7 +26,7 @@
           {% for r in recipes %}
             {% if r.menu_id %}
                 <div class="col-sm-4">
-                  <div class="card mb-3" style="width: 24rem">
+                  <div class="card mb-3" style="width: 22rem">
                     <h5 class="card-header"><b>{{r.menu_id.name}}</b></h5>
                     <div class="card-body">
                       <img
@@ -46,7 +46,7 @@
                       {% endif %}
                       <div class="text-center">
                         <a href="{% url 'add_button' r.menu_id.id %}" class="btn btn-primary">Add to Cart</a>
-                        <a href="#" onclick="scrollToCustomOrder()" class="btn btn-primary">Customize</a>
+                        <a onclick="scrollToCustomOrder()" class="btn btn-primary">Customize</a>
                       </div>
                     </div>
                   </div>
