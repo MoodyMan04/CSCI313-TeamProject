@@ -13,6 +13,8 @@ def view_cart(request):
     except:
         cart_items = CartItem.objects.filter(user=None)
         tokens = 0
+    
+    request.session['num_items_in_cart'] = len(cart_items)
     total_price = sum(item.item.price * item.quantity for item in cart_items)
     way_recieveds = Way_Recieved.objects.all
     
@@ -38,6 +40,8 @@ def add_to_cart(request, item_id):
 
     cart_item.quantity += 1
     cart_item.save()
+    request.session['num_items_in_cart'] = CartItem.objects.count()
+
     return redirect('/checkout')
 
 def add_custom_to_cart(request):
@@ -54,6 +58,8 @@ def add_custom_to_cart(request):
 
     cart_item.quantity += 1
     cart_item.save()
+    request.session['num_items_in_cart'] = CartItem.objects.count()
+
     return redirect('/checkout')
 
 def remove_from_cart(request, item_id):
@@ -63,6 +69,7 @@ def remove_from_cart(request, item_id):
     except:
         cart_item = CartItem.objects.filter(user=None).get(item=item)
     cart_item.delete()
+    request.session['num_items_in_cart'] = CartItem.objects.count()
     return redirect('/checkout')
 
 def process_order(request, w_id):

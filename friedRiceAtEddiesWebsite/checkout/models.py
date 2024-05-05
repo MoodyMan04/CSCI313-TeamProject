@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Member(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tokens = models.IntegerField()
+    tokens = models.IntegerField(default=0)
     phone_num = models.CharField(max_length=31)
     mailing_address = models.CharField(max_length=200)
 

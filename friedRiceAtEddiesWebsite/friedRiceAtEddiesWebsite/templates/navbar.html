@@ -18,43 +18,68 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="{% url 'menu' %}"
+          <a class="nav-link active" aria-current="page" href="{% url 'menu' %}"
+            >Menu</a
           >
-            Menu
-          </a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
           <form id="logout-form" method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button class="nav-link active"
-            aria-current="page" type="submit" class="btn btn-link">Logout</button>
+            <button
+              class="nav-link active btn btn-link"
+              aria-current="page"
+              type="submit"
+            >
+              Logout
+            </button>
           </form>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link active"
-          aria-current="page" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'login' %}?next={{ request.path }}"
+            >Login</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link active"
-          aria-current="page" href="{% url 'register' %}">Register</a>
-        </li>
-        {% endif %} 
-      </ul>
-      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a
             class="nav-link active"
             aria-current="page"
+            href="{% url 'register' %}"
+            >Register</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class="nav-item">
+          <a
+            class="nav-link active d-flex align-items-center"
+            aria-current="page"
             href="{% url 'checkout' %}"
           >
-            Checkout
+            <span class="me-1">Checkout</span>
+            {% if request.session.num_items_in_cart %}
+            <span class="badge bg-dark align-middle"
+              >{{ request.session.num_items_in_cart }}</span
+            >
+            {% endif %}
           </a>
         </li>
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+          <a class="nav-link active"
+            >Welcome, {{ request.user.username|capfirst }}</a
+          >
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active">Welcome, Guest</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

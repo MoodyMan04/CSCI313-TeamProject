@@ -2,6 +2,24 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm
+from checkout.models import Member
+from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
+# def init_new_user(instance, created, raw, **kwargs):
+#     # raw is set when model is created from loaddata.
+#     if created and not raw:
+#         instance.groups.add(
+#             Group.objects.get(name='new-user-group'))
+
+#         Category.objects.create(
+#             name="Default", user=instance)            category and feed are from personal model
+
+#         Feed.objects.create(
+#             user = instance,
+#             name = "%s's Feed" % instance.first_name,
+#             ....
+#         )
 
 def sign_up(request):
     if request.method == 'GET':
@@ -13,6 +31,10 @@ def sign_up(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
+
+            member = Member.objects.create(user=user)
+            member.save()
+            
             messages.success(request, 'Account creation successful. Please enjoy the rice.')
             login(request, user)
             return redirect('menu')
