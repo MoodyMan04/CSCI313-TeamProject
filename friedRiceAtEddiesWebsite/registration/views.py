@@ -2,6 +2,37 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, RegisterForm
+from checkout.models import Member
+from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
+# def init_new_user(instance, created, raw, **kwargs):
+#     # raw is set when model is created from loaddata.
+#     if created and not raw:
+#         instance.groups.add(
+#             Group.objects.get(name='new-user-group'))
+
+#         Category.objects.create(
+#             name="Default", user=instance)            category and feed are from personal model
+
+#         Feed.objects.create(
+#             user = instance,
+#             name = "%s's Feed" % instance.first_name,
+#             ....
+#         )
+
+def add_to_member(instance, created):
+    # raw is set when model is created from load data
+    if created and not None:
+        instance.groups.add(
+            Group.objects.get(name='new-user-group')
+        )
+        Member.objects.create(
+            name="anon", user=instance
+        )
+    else:
+        print(":')")
+
 
 def sign_up(request):
     if request.method == 'GET':
@@ -12,7 +43,13 @@ def sign_up(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
+            member = Member(user=user)
+            add_to_member(user, member)
+            # member = Member(user=user)
+            # user = member
+            # Member.user = user # <- this silly lil piece of code works but overrides the previous member
             user.save()
+            
             messages.success(request, 'Account creation successful. Please enjoy the rice.')
             login(request, user)
             return redirect('menu')
