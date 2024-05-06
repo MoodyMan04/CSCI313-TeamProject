@@ -15,6 +15,13 @@ body {
 .checkout-section {
   border-radius: 10px;
   padding: 10px;
-  background-color: #3b3f42;
+  background-color: #6741d9;
+  color: white;
+}
+
+.card-section {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1971c2;
   color: white;
 }

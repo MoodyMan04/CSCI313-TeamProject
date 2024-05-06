@@ -18,6 +18,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
+          <h3 class="text-center">Current Cart:</h3>
           <div class="checkout-section" style="background-color: #6741d9">
             {% if cart_items %} {% for i in cart_items %} {% if i.item %}
             <p>
@@ -27,8 +28,9 @@
                 style="color: white; transition: color 0.3s"
                 onmouseover="this.style.color='blue';"
                 onmouseout="this.style.color='white';"
-                >Remove</a
               >
+                Remove
+              </a>
             </p>
             {% endif %} {% endfor %}
             <p>Total: ${{total_price}}</p>
@@ -38,24 +40,76 @@
             <h1>There is nothing in your cart.</h1>
             {% endif %}
           </div>
-          {% comment %} deliver method selection {% endcomment %}
-          <p>
-            You have {{tokens}} tokens availible. How would you like to enjoy
-            your order?
-          </p>
-          {% if way_recieveds %} {% for w in way_recieveds %}
-          <a href="{% url 'process_order' w.id %}" class="btn btn-primary"
-            >{{w.type}}</a
+          <br />
+          <div class="text-center">
+            <a
+              class="btn btn-primary btn-lg"
+              href="{% url 'menu' %}"
+              role="button"
+            >
+              Continue Shopping
+            </a>
+          </div>
+          <br />
+          <div
+            class="card-section"
+            style="
+              border-radius: 10px;
+              padding: 10px;
+              background-color: #1971c2;
+              color: white;
+            "
           >
-          {% endfor %} {% endif %}
+            <h3>Card Information</h3>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="cashCheckbox"
+            />
+            <label class="form-check-label" for="cashCheckbox">
+              Ignore card information, pay with cash instead
+            </label>
+            <input class="form-control" type="text" placeholder="Card Number" />
+            <br />
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Security Code"
+            />
+            <br />
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Cardholder Name"
+            />
+            <br />
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Billing Address"
+            />
+            <br />
+            <button type="button" class="btn btn-primary">
+              Submit Card Information
+            </button>
+          </div>
+          <br />
+          <div class="text-center">
+            <p>
+              You have {{tokens}} tokens availible. How would you like to enjoy
+              your order?
+            </p>
+            {% if way_recieveds %} {% for w in way_recieveds %}
+            <a href="{% url 'process_order' w.id %}" class="btn btn-primary">
+              {{w.type}}
+            </a>
+            {% endfor %} {% endif %}
+          </div>
         </div>
         <div class="col-lg-6">{% include 'checkout/map.html' %}</div>
       </div>
-      <a class="btn btn-primary btn-lg" href="{% url 'menu' %}" role="button"
-        >Continue Shopping</a
-      >
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
