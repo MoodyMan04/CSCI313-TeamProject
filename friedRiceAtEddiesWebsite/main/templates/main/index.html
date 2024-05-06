@@ -108,7 +108,11 @@
         {%if menu %} {%for item in menu %}
         <div class="col-sm">
           <div class="card" style="width: 18rem">
+            {% if item.name == 'Custom item' %}
+            <h5 class="card-header"><b>Random Item!!1!</b></h5>
+            {% else %}
             <h5 class="card-header"><b>{{item.name}}</b></h5>
+            {% endif %}
             <div class="card-body">
               <img
                 class="card-img"
