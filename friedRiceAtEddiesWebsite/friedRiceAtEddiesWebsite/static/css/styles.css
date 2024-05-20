@@ -1,0 +1,27 @@
+html,
+body {
+  background-color: aliceblue;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-order {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1971c2;
+  color: white;
+}
+
+.checkout-section {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #6741d9;
+  color: white;
+}
+
+.card-section {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1971c2;
+  color: white;
+}
